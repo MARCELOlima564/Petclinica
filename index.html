@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/style.index.css">
+    <script src="../PetShop/assets/js/script.index.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <h1>Clínica Veterinária</h1>
+        <div id="div-header">
+           <button id="cadastro">Cadastro</button>
+           <button id="exibicao">Exibição</button>
+        </div>
+    </header>
+
+    <div id="container">
+        <h2>Cadastro de Pets</h2>
+
+        <label for="tutor">Tutor:</label>
+        <input id="tutor" type="text">
+
+        <label for="nomedopet">Nome do Pet:</label>
+        <input id="nomedopet" type="text">
+
+        <label for="especie">Espécie:</label>
+        <input id="especie" type="text">
+
+        <label for="fotinha">Fotinha:</label>
+        <input id="fotinha" type="text">
+
+        <label for="datadenacsimento">Data de Nascimento:</label>
+        <input id="datadenacsimento" type="date">
+    </div>
+    <button onclick="verificarInputs()" id="cadastrar">Cadastrar</button>
+
+    <footer>
+        <p>© Clínica Veterinária. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>
