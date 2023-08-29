@@ -64,6 +64,9 @@ function cadastrarPet() {
     const pet = new Pets(tutor, nomedopet, especie, fotinha, datadenascimento);
 
     console.log(pet);
+
+    bibliotecaPets.add(pet)
+
 }
 
 class listadePets{
@@ -76,8 +79,26 @@ class listadePets{
             envieMsg("Preencha todos os campos", "erro");
         } else {
             this.listadePetsArray.push(parametro);
+            limparInputs();
             envieMsg("Cadastrado com sucesso", "sucesso")
             console.log(this.listadePetsArray);
         }
     }
 }
+
+const bibliotecaPets = new listadePets();
+
+console.log(bibliotecaPets);
+
+
+function limparInputs() {
+    console.log("Usei a funcao de limparInputs");
+
+
+    document.getElementById("tutor").value = "";
+    document.getElementById("nomedopet").value = "";
+    document.getElementById("especie").value = "";
+    document.getElementById("fotinha").value = "";
+    document.getElementById("datadenascimento").value = "";
+}
+
