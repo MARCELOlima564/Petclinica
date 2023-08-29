@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,17 +8,18 @@
     <script src="../PetShop/assets/js/script.index.js"></script>
     <title>Document</title>
 </head>
+
 <body>
     <header>
         <h1>Clínica Veterinária</h1>
         <div id="div-header">
-           <button id="cadastro">Cadastro</button>
-           <button id="exibicao">Exibição</button>
+            <button onclick="registro()" id="cadastro">Cadastro</button>
+            <button onclick="exibicao()" id="exibicao">Exibição</button>
         </div>
     </header>
-    <div>
+    <h2>Cadastro de Pets</h2>
     <div id="container">
-        <h2>Cadastro de Pets</h2>
+
 
         <label for="tutor">Tutor:</label>
         <input id="tutor" type="text">
@@ -34,16 +36,21 @@
         <label for="datadenacsimento">Data de Nascimento:</label>
         <input id="datadenacsimento" type="date">
 
+        <button onclick="cadastrarPet()" class="button">Cadastrar</button>
+
         <div id="msg"></div>
     </div>
-    <button onclick="cadastrarPet()" class="button">Cadastrar</button>
+    <div id="div-button">
+    </div>
 
-</div>
 
-<div id="listapets"></div>
 
-    <footer>
-        <p>© Clínica Veterinária. Todos os direitos reservados.</p>
-    </footer>
+    <div id="listapets" class="hidden"></div>
+
+    <div class="footer">
+        <p>© 2023 Clínica Veterinária. Todos os direitos reservados.</p>
+    </div>
+
 </body>
+
 </html>

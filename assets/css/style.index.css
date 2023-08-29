@@ -1,0 +1,103 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+        .erro{
+            color: red;
+        }
+        .sucesso{
+            color: green;
+        }
+#div-header{
+    text-align: center;
+}
+h1{
+    text-align: center;
+    color: white;
+}
+h2{
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 35px;
+}
+header{
+    background-color: #1d7044;
+    width: 100%;
+    height: 80px;
+}
+#cadastro{
+    background-color: #1d7044;
+    border: none;
+    color: white;
+    padding: 7px;
+    cursor: pointer;
+}
+#exibicao{
+    background-color: #1d7044;
+    border: none;
+    color: white;
+    padding: 7px;
+    cursor: pointer;
+}
+#container{
+    align-items: center;
+    flex-direction: column;
+    display: flex;
+    margin-top: 4.3rem;
+}
+label{
+    font-size: 15px;
+}
+input{
+    width: 600px;
+    padding: 0.1rem;
+    border-radius: 5px;
+    border-color: green;
+    margin: 5px;
+}
+#div-button{
+    text-align: center;
+    align-items: center;
+    margin-top: 20px;
+}
+.button{
+    background-color: #1d7044;
+    border: none;
+    color: black;
+    border-radius: 3px;
+    height: 30px;
+    width: 90px;
+}
+.footer{
+    background-color: #1d7044;
+    position: auto;
+    position: fixed;
+    height: 80px;
+    width: 100%;
+    margin-top: 3.5vh;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    align-items: center;
+    padding: 1.5rem;
+}
+.hidden{
+    display: none !important;
+}
+#Petsclinic{
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 330px;
+    width: 300px;
+    padding: 5px;
+    background-color: rgb(204, 255, 204);
+    border-radius: 20px;
+    margin-left: 500px;
+    margin-top: 10px;
+}
+img{
+    width: 100px;
+    height: 100px;
+}

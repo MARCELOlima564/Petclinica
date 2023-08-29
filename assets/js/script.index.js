@@ -49,20 +49,31 @@ class Pets {
         this.idade = this.getAge();
     }
 
-     getAge(){
+
+    getAge() {
         let today = new Date();
         let birthdate = new Date(this.datadenascimento);
-        let age = today.getFullYear() - birthdate.getFullYear();
-        let month = today.getMonth() - birthdate.getMonth();
-
-        if (month < 0 || (month === 0 && today.getDate() < birthdate.getDate())) {
-            age--;
+        let ageYears = today.getFullYear() - birthdate.getFullYear();
+        let ageMonths = today.getMonth() - birthdate.getMonth();
+        let ageDays = today.getDate() - birthdate.getDate();
+    
+        if (ageDays < 0) {
+            ageMonths--;
+            const lastMonthDate = new Date(today.getFullYear(), today.getMonth(), 0).getDate();
+            ageDays += lastMonthDate;
         }
-        console.log("Passou pelo calculateAge() da class User");
-        return age;
-        
+    
+        if (ageMonths < 0) {
+            ageYears--;
+            ageMonths += 12;
+        }
+    
+        return `${ageYears} anos, ${ageMonths} meses e ${ageDays} dias`
     }
+    
 }
+
+
 
 const petTeste = new Pets("Marcelo", "Toddy", "Cachorro", "do bubum", "1 mes");
 
@@ -83,6 +94,17 @@ function cadastrarPet() {
 
     renderizarConteudo();
 
+
+
+
+}
+
+function dateinPTBR(datadenascimento) {
+    console.log("Passou pela funcao dateinPTBR()");
+
+    let dateArray = datadenascimento.split("-");
+    let datePTBR = dateArray[2] + "/" + dateArray[1] + "/" + dateArray[0];
+    return datePTBR;
 }
 
 class listadePets{
@@ -141,18 +163,29 @@ function renderizarConteudo() {
  
         const petDiv = `
           
-            <div class="Petsclinic">
+            <div id="Petsclinic">
                 <p>Tutor: ${pets.tutor}</p>
                 <p>Nome do pet:${pets.nomedopet}</p>
                 <p>Espécie: ${pets.especie}</p>
                 <img src="${pets.fotinha}" alt="${pets.tutor}">
-                <p>Data de Nascimento: ${pets.datadenascimento}</p>
+                <p>Data de Nascimento: ${dateinPTBR(pets.datadenascimento)}</p>
                 <p>Idade: ${pets.idade}</p>
             </div>
        `;
 
         listaHTML.innerHTML += petDiv;
     });
+}
+function registro(){
+    document.getElementById("container").classList.remove("hidden");
+    document.getElementById("listapets").classList.add("hidden");
+    document.getElementById("Petsclinic").classList.add("hidden");
+}
+
+function exibicao(){
+    document.getElementById("container").classList.add("hidden");
+    document.getElementById("listapets").classList.remove("hidden");
+    document.getElementById("Petsclinic").classList.remove("hidden");
 }
 
 
