@@ -16,9 +16,25 @@ function verificarInputs() {
 
     if(tutor == "" || nomedopet == "" || especie == "" || fotinha == "" || datadenascimento == ""){
         console.log("Os dados estão vazios");
+        envieMsg("Preencha todos os campos", "erro");
         return true;
     }else{
         console.log("Os dados não estão em branco");
         return false;
     }
+}
+
+function envieMsg(msg, tipo){
+    let msgDiv = document.getElementById("msg");
+    msgDiv.innerHTML = "";
+
+
+     let msgParaTela = `
+     <p class='${tipo}'>${msg}</p>
+     `
+     msgDiv.innerHTML += msgParaTela;
+
+     setTimeout(function(){
+        msgDiv.innerHTML = "";
+     }, 3000);
 }
