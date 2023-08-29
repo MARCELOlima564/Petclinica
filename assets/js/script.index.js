@@ -16,7 +16,6 @@ function verificarInputs() {
 
     if(tutor == "" || nomedopet == "" || especie == "" || fotinha == "" || datadenascimento == ""){
         console.log("Os dados estão vazios");
-        envieMsg("Preencha todos os campos", "erro");
         return true;
     }else{
         console.log("Os dados não estão em branco");
@@ -37,4 +36,48 @@ function envieMsg(msg, tipo){
      setTimeout(function(){
         msgDiv.innerHTML = "";
      }, 3000);
+}
+
+class Pets {
+    constructor(tutor, nomedopet, especie, fotinha, datadenascimento) {
+
+        this.tutor = tutor;
+        this.nomedopet = nomedopet;
+        this.especie = especie;
+        this.fotinha = fotinha;
+        this.datadenascimento = datadenascimento;
+
+    }
+}
+
+const petTeste = new Pets("Marcelo", "Toddy", "Cachorro", "do bubum", "1 mes");
+
+console.log(petTeste);
+
+function cadastrarPet() {
+    let tutor = document.getElementById("tutor").value;
+    let nomedopet = document.getElementById("nomedopet").value;
+    let especie = document.getElementById("especie").value;
+    let fotinha = document.getElementById("fotinha").value;
+    let datadenascimento = document.getElementById("datadenacsimento").value;
+
+    const pet = new Pets(tutor, nomedopet, especie, fotinha, datadenascimento);
+
+    console.log(pet);
+}
+
+class listadePets{
+    constructor(){
+        this.listadePetsArray = [];
+    }
+
+    add(parametro){
+        if (verificarInputs()) {
+            envieMsg("Preencha todos os campos", "erro");
+        } else {
+            this.listadePetsArray.push(parametro);
+            envieMsg("Cadastrado com sucesso", "sucesso")
+            console.log(this.listadePetsArray);
+        }
+    }
 }
