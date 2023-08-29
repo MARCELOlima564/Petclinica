@@ -46,7 +46,21 @@ class Pets {
         this.especie = especie;
         this.fotinha = fotinha;
         this.datadenascimento = datadenascimento;
+        this.idade = this.getAge();
+    }
 
+     getAge(){
+        let today = new Date();
+        let birthdate = new Date(this.datadenascimento);
+        let age = today.getFullYear() - birthdate.getFullYear();
+        let month = today.getMonth() - birthdate.getMonth();
+
+        if (month < 0 || (month === 0 && today.getDate() < birthdate.getDate())) {
+            age--;
+        }
+        console.log("Passou pelo calculateAge() da class User");
+        return age;
+        
     }
 }
 
@@ -65,7 +79,9 @@ function cadastrarPet() {
 
     console.log(pet);
 
-    bibliotecaPets.add(pet)
+    bibliotecaPets.add(pet);
+
+    renderizarConteudo();
 
 }
 
@@ -77,7 +93,10 @@ class listadePets{
     add(parametro){
         if (verificarInputs()) {
             envieMsg("Preencha todos os campos", "erro");
-        } else {
+        }else if(!isURLValida(parametro.fotinha)){
+            envieMsg("URL inválida", "erro")
+        }
+         else {
             this.listadePetsArray.push(parametro);
             limparInputs();
             envieMsg("Cadastrado com sucesso", "sucesso")
@@ -90,15 +109,50 @@ const bibliotecaPets = new listadePets();
 
 console.log(bibliotecaPets);
 
+function isURLValida(url) {
+    if(url.match(/\.(jpeg|jpg|gif|png)$/) != null){
+        return true;
+    } else {
+        return false;
+    }
+}
+
 
 function limparInputs() {
-    console.log("Usei a funcao de limparInputs");
-
-
-    document.getElementById("tutor").value = "";
+   document.getElementById("tutor").value = "";
     document.getElementById("nomedopet").value = "";
     document.getElementById("especie").value = "";
     document.getElementById("fotinha").value = "";
-    document.getElementById("datadenascimento").value = "";
+    document.getElementById("datadenacsimento").value = "";
 }
+
+function renderizarConteudo() {
+ 
+    let listaHTML = document.getElementById("listapets");
+    listaHTML.innerHTML = '';
+
+
+    let array = bibliotecaPets.listadePetsArray;
+
+    console.log(array);
+
+ 
+    array.forEach(pets => {
+ 
+        const petDiv = `
+          
+            <div class="Petsclinic">
+                <p>Tutor: ${pets.tutor}</p>
+                <p>Nome do pet:${pets.nomedopet}</p>
+                <p>Espécie: ${pets.especie}</p>
+                <img src="${pets.fotinha}" alt="${pets.tutor}">
+                <p>Data de Nascimento: ${pets.datadenascimento}</p>
+                <p>Idade: ${pets.idade}</p>
+            </div>
+       `;
+
+        listaHTML.innerHTML += petDiv;
+    });
+}
+
 
